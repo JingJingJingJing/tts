@@ -1,0 +1,11 @@
+{
+    "av":{
+        "title-a":"<a class=\"w\">a</a>this is a title <a class=\"target\"> target content1 <span class=\"ss\">avav</span></a>",
+        "other":"just somthing else"
+    },
+    "bm":{
+        "cool":"I'm sth cool.",
+        "title-b":"this is bm title <a class=\"target\"> target content2 <span class=\"ssdas.asdnc\">bmbm</span></a>",
+        "other":"just somthing else"
+    }
+}
