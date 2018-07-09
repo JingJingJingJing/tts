@@ -1,6 +1,7 @@
 {
     "av":{
         "title-a":"<a class=\"w\">a</a>this is a title <a class=\"target\"> target content1 <span class=\"ss\">avav</span></a>",
+        "append":"I'm appended",
         "other":"just somthing else"
     },
     "bm":{
