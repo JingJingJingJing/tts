@@ -1,8 +1,7 @@
 {
     "av": {
         "title-a": "<a class=\"tl\">t</a>this is a title <a class=\"tl\">tl<span class=\"ss\">avav</span></a>",
-        "other": "just somthing else",
-        "append": "ar append"
+        "other": "just somthing else"
     },
     "bm": {
         "cool": "I'm sth cool.",

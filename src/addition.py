@@ -11,8 +11,9 @@ def append(tbc, adt, std):
             if key in tbc:
                 tbc[key] = adt[key]
             else:
+                after = False
                 for k in std:
-                    after = False
+                    print(k)
                     if not after and k == key:
                         after = True
                         tbc[key] = adt[key]
@@ -34,4 +35,3 @@ for fileName in dir:
         append(tbcj,adtj,target)
         tbc = open(dirName+"//"+fileName, "w")
         tbc.write(json.dumps(tbcj, indent=4))
-
