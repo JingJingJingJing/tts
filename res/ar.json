@@ -1,11 +1,11 @@
 {
     "av": {
-        "title-a": "<a class=\"tl\">t</a>this is a title <a class=\"tl\">tl<span class=\"ss\">avav</span></a>",
+        "title-a": "<a class=\"target\"> ar </a> this is a title <a class=\"ar\"> tl </a>",
         "other": "just somthing else"
     },
     "bm": {
         "cool": "I'm sth cool.",
-        "title-b": "this is bm title <a class=\"afj\"> test content 2<span class=\"ssdas.asdnc\">bmbm</span></a>",
+        "title-b": "this is bm title <a class=\"target\"> test content 2<span class=\"ssdas.asdnc\">bmbm</span></a>",
         "other": "just somthing else"
     }
 }
