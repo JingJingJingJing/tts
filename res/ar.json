@@ -1,6 +1,6 @@
 {
     "av": {
-        "title-a": "<a class=\"target\"> ar </a> this is a title <a class=\"ar\"> tl </a>",
+        "title-a": "<a class=\"target\"> ar </a> this is a title <a class=\"ar\"> tl ...span... </a>",
         "other": "just somthing else"
     },
     "bm": {

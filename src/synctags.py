@@ -7,7 +7,9 @@ def sync_a_tag(node, target, retranslate):
     for key in node:
         if isinstance(node[key],dict):
             if key in target:
-                sync_a_tag(node[key],target[key],retranslate)
+                if key not in retranslate:
+                    retranslate[key] = dict()
+                sync_a_tag(node[key],target[key],retranslate[key])
         else:
             if "<a" in node[key] and key in target:
                 olds = get_a_tags(node[key])
@@ -17,9 +19,8 @@ def sync_a_tag(node, target, retranslate):
                         if len(get_tags(get_a_content(old))) == len(get_tags(get_a_content(news[i]))):
                             node[key] = node[key].replace(get_a_tag(old),get_a_tag(news[i]),1)
                         else:
-                            print(key+":"+old)
-                            print(key+":"+news[i])
-                            retranslate[key] = news[i]
+                            if key not in retranslate:
+                                retranslate[key] = news[i]
                 
 def get_tags(s):
     pattern = re.compile("(<.*?>)")
@@ -45,6 +46,12 @@ def get_a_content(s):
     else:
         return ""
 
+def clearEmpty(jsonObj):
+    keys = list(jsonObj.keys())
+    for key in keys:
+        if isinstance(jsonObj[key],dict) and len(list(jsonObj[key].keys())) <= 0:
+            jsonObj.pop(key)
+
 
 country_codes = {"ar","cs","da","de","el","en","es","fi","fr","he","hr","hu","it","ja","ko","nb","nl","pl","pt","pt-BR","ro","ru","sk","sl","sr-Latn","sv","tr","uk","zh-hans","zh-hant"}
 dirName = input("NLS directory:")
@@ -61,6 +68,7 @@ for fileName in dir:
         # write the file which was modified
         tbc_file = open(dirName+"//"+fileName, "w")
         tbc_file.write(json.dumps(tbc_js, indent=4))
+clearEmpty(retranslatej)
 retranslate = open("re-translte.json","w")
 retranslate.write(json.dumps(retranslatej, indent=4))
 
