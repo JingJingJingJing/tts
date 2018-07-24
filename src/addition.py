@@ -20,18 +20,18 @@ def append(tbc, adt, std):
                     if after:
                         tbc.move_to_end(k)
                         
-                    
+def main():
+    sl = {"ar","cs","da","de","el","en","es","fi","fr","he","hr","hu","it","ja","ko","nb","nl","pl","pt","pt-BR","ro","ru","sk","sl","sr-Latn","sv","tr","uk","zh-hans","zh-hant"}
+    dirName = input("NLS directory:")
+    appendDir = input("append directory:")
+    dir = os.listdir(dirName)
+    target = json.load(open(dirName+"//target.json"),object_pairs_hook=OrderedDict)
+    for fileName in dir:
+        if fileName.replace(".json","") in sl:
+            tbc = open(dirName+"//"+fileName, "r")
+            adtj = json.load(open(appendDir+"//"+fileName, "r"), object_pairs_hook=OrderedDict)
+            tbcj = json.load(tbc, object_pairs_hook=OrderedDict)
+            append(tbcj,adtj,target)
+            tbc = open(dirName+"//"+fileName, "w")
+            tbc.write(json.dumps(tbcj, indent=4))
 
-sl = {"ar","cs","da","de","el","en","es","fi","fr","he","hr","hu","it","ja","ko","nb","nl","pl","pt","pt-BR","ro","ru","sk","sl","sr-Latn","sv","tr","uk","zh-hans","zh-hant"}
-dirName = input("NLS directory:")
-appendDir = input("append directory:")
-dir = os.listdir(dirName)
-target = json.load(open(dirName+"//target.json"),object_pairs_hook=OrderedDict)
-for fileName in dir:
-    if fileName.replace(".json","") in sl:
-        tbc = open(dirName+"//"+fileName, "r")
-        adtj = json.load(open(appendDir+"//"+fileName, "r"), object_pairs_hook=OrderedDict)
-        tbcj = json.load(tbc, object_pairs_hook=OrderedDict)
-        append(tbcj,adtj,target)
-        tbc = open(dirName+"//"+fileName, "w")
-        tbc.write(json.dumps(tbcj, indent=4))

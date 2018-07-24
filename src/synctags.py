@@ -52,23 +52,23 @@ def clearEmpty(jsonObj):
         if isinstance(jsonObj[key],dict) and len(list(jsonObj[key].keys())) <= 0:
             jsonObj.pop(key)
 
-
-country_codes = {"ar","cs","da","de","el","en","es","fi","fr","he","hr","hu","it","ja","ko","nb","nl","pl","pt","pt-BR","ro","ru","sk","sl","sr-Latn","sv","tr","uk","zh-hans","zh-hant"}
-dirName = input("NLS directory:")
-dir = os.listdir(dirName)
-# read the standard file
-target_js = json.load(open(dirName+"//target.json"), object_pairs_hook=OrderedDict)
-retranslatej = dict()
-for fileName in dir:
-    if fileName.replace(".json","") in country_codes:
-        # read file to be modify
-        tbc_file = open(dirName+"/"+fileName, "r")
-        tbc_js = json.load(tbc_file, object_pairs_hook=OrderedDict)
-        sync_a_tag(tbc_js,target_js,retranslatej)
-        # write the file which was modified
-        tbc_file = open(dirName+"//"+fileName, "w")
-        tbc_file.write(json.dumps(tbc_js, indent=4))
-clearEmpty(retranslatej)
-retranslate = open("re-translte.json","w")
-retranslate.write(json.dumps(retranslatej, indent=4))
+def main():
+    country_codes = {"ar","cs","da","de","el","en","es","fi","fr","he","hr","hu","it","ja","ko","nb","nl","pl","pt","pt-BR","ro","ru","sk","sl","sr-Latn","sv","tr","uk","zh-hans","zh-hant"}
+    dirName = input("NLS directory:")
+    dir = os.listdir(dirName)
+    # read the standard file
+    target_js = json.load(open(dirName+"//target.json"), object_pairs_hook=OrderedDict)
+    retranslatej = dict()
+    for fileName in dir:
+        if fileName.replace(".json","") in country_codes:
+            # read file to be modify
+            tbc_file = open(dirName+"/"+fileName, "r")
+            tbc_js = json.load(tbc_file, object_pairs_hook=OrderedDict)
+            sync_a_tag(tbc_js,target_js,retranslatej)
+            # write the file which was modified
+            tbc_file = open(dirName+"//"+fileName, "w")
+            tbc_file.write(json.dumps(tbc_js, indent=4))
+    clearEmpty(retranslatej)
+    retranslate = open("re-translte.json","w")
+    retranslate.write(json.dumps(retranslatej, indent=4))
 
