@@ -1,7 +1,8 @@
 import json
 import os
-from collections import OrderedDict
 import re
+from collections import OrderedDict
+from constant import codelist
    
 def sync_a_tag(node, target, retranslate):
     for key in node:
@@ -53,14 +54,13 @@ def clearEmpty(jsonObj):
             jsonObj.pop(key)
 
 def main():
-    country_codes = {"ar","cs","da","de","el","en","es","fi","fr","he","hr","hu","it","ja","ko","nb","nl","pl","pt","pt-BR","ro","ru","sk","sl","sr-Latn","sv","tr","uk","zh-hans","zh-hant"}
     dirName = input("NLS directory:")
     dir = os.listdir(dirName)
     # read the standard file
     target_js = json.load(open(dirName+"//target.json"), object_pairs_hook=OrderedDict)
     retranslatej = dict()
     for fileName in dir:
-        if fileName.replace(".json","") in country_codes:
+        if fileName.replace(".json","") in codelist:
             # read file to be modify
             tbc_file = open(dirName+"/"+fileName, "r")
             tbc_js = json.load(tbc_file, object_pairs_hook=OrderedDict)
