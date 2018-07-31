@@ -1,0 +1,9 @@
+{
+    "ioc": {
+        "detail2": "It is available for computers based on the latest Intel\u00ae Core\u2122 processors that are fingerprint enabled. Learn more about Intel Online Connect in <a data-i18n-common=\"tips-and-tricks\" data-uap-navigate=\"lenovo-companion:PARAM?compendiumArticle=BB5C01B6-CA8B-42C4-B39E-8D5E24D11F11\" href=\"javascript:void(0)\">Tips and Tricks.</a>"
+    },
+    "av": {
+        "defender-header-description": "You are currently being protected by Windows Defender. However you could be better protected with <span data-i18n-common=\"mcafee\">Mcafee LiveSafe</span>. Learn more below or <a target=\"_blank\" data-metrics-name=\"Antivirus.WindowsDefender.ActivateMcAfee\" data-metrics-type=\"ItemClick\" data-metrics-parent=\"Features.SecurityAdvisor\" href=\"https://www.mcafee.com/consumer/en-us/promos/expiry/l714/mls_430/trial/pre.html\">activate <span data-i18n-common=\"mcafee\">Mcafee LiveSafe</span> now</a>.",
+        "other-header-description": "You are currently being protected by <span class=\"third-party-name\"></span>. However you could be better protected with <span data-i18n-common=\"mcafee\">Mcafee LiveSafe</span>. Learn more below or <a target=\"_blank\" data-metrics-name=\"Antivirus.Other.ActivateMcAfee\" data-metrics-type=\"ItemClick\" data-metrics-parent=\"Features.SecurityAdvisor\" href=\"https://www.mcafee.com/consumer/en-us/promos/expiry/l714/mls_430/trial/pre.html\">activate <span data-i18n-common=\"mcafee\">Mcafee LiveSafe</span> now</a>."
+    }
+}

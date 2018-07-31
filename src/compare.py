@@ -1,7 +1,7 @@
 import os
 import json
 from collections import OrderedDict
-from constant import codelist
+from utils import codelist, loadJsonFile
 
 def compare_switch(new, old):
     for key in new:
@@ -19,9 +19,9 @@ def main():
     for fileName in os.listdir(nls_dir):
         lang = fileName.replace(".json","")
         if lang in codelist and fileName in os.listdir(return_dir):
-            oldj = json.load(open(nls_dir+"//"+fileName, "r"), object_pairs_hook=OrderedDict)
-            newj = json.load(open(return_dir+"//"+fileName, "r"), object_pairs_hook=OrderedDict)
+            oldj = loadJsonFile(nls_dir+"//"+fileName)
+            newj = loadJsonFile(return_dir+"//"+fileName)
             compare_switch(newj, oldj)
-            old = open(nls_dir+"//"+fileName, "w")
-            old.write(json.dumps(oldj, indent=4))
+            old = open(nls_dir+"//"+fileName, "w", encoding="UTF-8")
+            old.write(json.dumps(oldj, indent=4, ensure_ascii=False))
             

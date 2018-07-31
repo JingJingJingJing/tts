@@ -17,4 +17,3 @@ Get-ChildItem ./ | ForEach-Object -Process{
 		}
 	}
 }
-pause

@@ -2,9 +2,11 @@ import json
 import os
 import re
 from collections import OrderedDict
-from constant import codelist
+from utils import codelist, loadJsonFile
+
    
 def sync_a_tag(node, target, retranslate):
+    deletes = list()
     for key in node:
         if isinstance(node[key],dict):
             if key in target:
@@ -12,7 +14,7 @@ def sync_a_tag(node, target, retranslate):
                     retranslate[key] = dict()
                 sync_a_tag(node[key],target[key],retranslate[key])
         else:
-            if "<a" in node[key] and key in target:
+            if key in target and key in node and "<a" in target[key]:
                 olds = get_a_tags(node[key])
                 news = get_a_tags(target[key])
                 if len(olds) == len(news):
@@ -21,7 +23,16 @@ def sync_a_tag(node, target, retranslate):
                             node[key] = node[key].replace(get_a_tag(old),get_a_tag(news[i]),1)
                         else:
                             if key not in retranslate:
-                                retranslate[key] = news[i]
+                                retranslate[key] = target[key]
+                else:
+                    if key not in retranslate:
+                        retranslate[key] = target[key]
+            elif key in target and key not in node:
+                if key not in retranslate:
+                    retranslate[key] = target[key]
+            elif key not in target and key in node:
+                if key not in deletes:
+                    deletes.append(key)
                 
 def get_tags(s):
     pattern = re.compile("(<.*?>)")
@@ -57,18 +68,17 @@ def main():
     dirName = input("NLS directory:")
     dir = os.listdir(dirName)
     # read the standard file
-    target_js = json.load(open(dirName+"//target.json"), object_pairs_hook=OrderedDict)
+    target_js = loadJsonFile(dirName+"//en.json")
     retranslatej = dict()
     for fileName in dir:
         if fileName.replace(".json","") in codelist:
             # read file to be modify
-            tbc_file = open(dirName+"/"+fileName, "r")
-            tbc_js = json.load(tbc_file, object_pairs_hook=OrderedDict)
-            sync_a_tag(tbc_js,target_js,retranslatej)
+            node = loadJsonFile(dirName+"/"+fileName)
+            sync_a_tag(node,target_js,retranslatej)
+            #TODO delete keys
             # write the file which was modified
-            tbc_file = open(dirName+"//"+fileName, "w")
-            tbc_file.write(json.dumps(tbc_js, indent=4))
+            tbc_file = open(dirName+"//"+fileName, "w", encoding="UTF-8")
+            tbc_file.write(json.dumps(node, indent=4, ensure_ascii=False))
     clearEmpty(retranslatej)
-    retranslate = open("re-translte.json","w")
+    retranslate = open("re-translte.json", "w", encoding="UTF-8")
     retranslate.write(json.dumps(retranslatej, indent=4))
-
