@@ -37,4 +37,3 @@ def main():
             append(tbcj,adtj,target)
             tbc = open(dirName+"//"+fileName, "w", encoding="UTF-8")
             tbc.write(json.dumps(tbcj, indent=4, ensure_ascii=False))
-

@@ -6,15 +6,16 @@ from utils import codelist, loadJsonFile
 
    
 def sync_a_tag(node, target, retranslate):
-    deletes = list()
-    for key in node:
-        if isinstance(node[key],dict):
+    keys = list(node.keys())
+    keys.extend(list(target.keys()))
+    for key in keys:
+        if key in node and isinstance(node[key],dict):
             if key in target:
                 if key not in retranslate:
                     retranslate[key] = dict()
                 sync_a_tag(node[key],target[key],retranslate[key])
         else:
-            if key in target and key in node and "<a" in target[key]:
+            if key in target and key in node and isinstance(node[key],str) and "<a" in target[key]:
                 olds = get_a_tags(node[key])
                 news = get_a_tags(target[key])
                 if len(olds) == len(news):
@@ -31,8 +32,7 @@ def sync_a_tag(node, target, retranslate):
                 if key not in retranslate:
                     retranslate[key] = target[key]
             elif key not in target and key in node:
-                if key not in deletes:
-                    deletes.append(key)
+                node.pop(key)
                 
 def get_tags(s):
     pattern = re.compile("(<.*?>)")
@@ -69,7 +69,7 @@ def main():
     dir = os.listdir(dirName)
     # read the standard file
     target_js = loadJsonFile(dirName+"//en.json")
-    retranslatej = dict()
+    retranslatej = OrderedDict()
     for fileName in dir:
         if fileName.replace(".json","") in codelist:
             # read file to be modify

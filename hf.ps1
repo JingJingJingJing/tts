@@ -12,8 +12,8 @@ Get-ChildItem ./ | ForEach-Object -Process{
 			}
 			$old_path = $_.name+"/en.json"
 			$new_path = "json/"+$hash[$_.name]+".json"
-			mv $old_path $new_path
-			rm $_.name
+			Move-Item $old_path $new_path
+			Remove-Item $_.name
 		}
 	}
 }
