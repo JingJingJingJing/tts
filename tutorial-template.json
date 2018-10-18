@@ -1,0 +1,28 @@
+﻿{
+  "tutorial": {
+    "MeetLenovoVantage": "Meet Lenovo Vantage",
+    "ExploreKeyFeature": "Let’s explore key features",
+    "LearnHowToInstall": "Learn how to easily install the latest updates, personalize your settings, enable advanced security features and more.",
+    "NextButton": "Next",
+    "SystemUpdate": "System Update",
+    "KeepYourDevice": "Keeping your device in optimal shape is easy",
+    "InstallLatestUpdate": "Installing the latest updates improves performance and security, and Lenovo Vantage makes it simple for you to download and install them automatically.",
+    "HardwareSettings": "Hardware Settings",
+    "LetsPersonalizeYourPC": "Let’s personalize your PC",
+    "QuicklyCustomize": "Quickly customize various power, audio/visual, and smart settings to make your PC behave exactly the way you want it to.",
+    "SecurityAdvisor": "Security Advisor",
+    "EasyToProtect": "It’s easy to protect your device, data, and identity",
+    "EnableAdvancedSettings": "Enable advanced security settings, and get exclusive offers from Lenovo recommended security software providers.",
+    "CloseButton": "Let's go",
+    "AppsAndOffers": "Apps and Offers",
+    "TailoredForYou": "Tailored just for you",
+    "DiscoverNewApps": "Discover new apps and accessories for your device, stay current on the latest trends, and explore exclusive discounts, coupons, and rewards."
+  },
+  "title": {
+    "MeetLenovoVantage": "Meet Lenovo Vantage",
+    "SystemUpdate": "System Update",
+    "HardwareSettings": "Hardware Settings",
+    "SecurityAdvisor": "Security Advisor",
+    "AppsandOffers": "Apps and Offers"
+  }
+}

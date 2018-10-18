@@ -29,7 +29,7 @@ def main():
     dirName = input("NLS directory:")
     appendDir = input("append directory:")
     dir = os.listdir(dirName)
-    target = json.load(open(dirName+"//en.json", encoding="UTF-8"), object_pairs_hook=OrderedDict)
+    target = json.load(open(dirName+"//en.json", encoding="UTF-8-sig"), object_pairs_hook=OrderedDict)
     for fileName in dir:
         if fileName.replace(".json","") in codelist:
             adtj = loadJsonFile(appendDir+"//"+fileName)
