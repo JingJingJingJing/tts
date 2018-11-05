@@ -3,7 +3,7 @@ import utils
 import json
 from collections import OrderedDict
 
-sectionMap = {'Tutorial': "tutorial", 'Dashlane': 'pm', 'Wifi Security': 'ws'}
+sectionMap = {'Antivirus': "av", 'Wifi Security': 'ws', 'zhangling': 'zhangling'}
 
 def getTitle(title):
     return title.replace('-','').strip()
@@ -36,7 +36,6 @@ def txt2Json(txtDir):
                     if(s):
                         keyValueList = splitKeyValue(s)
                         json[keyValueList[0].strip('\"')] = keyValueList[1].strip().strip(',').strip('"').replace('\\\"', '"')
-                        print(json[keyValueList[0].strip('\"')])
                     s = next(it)
                 title = getTitle(s)
             else:

@@ -3,6 +3,7 @@ import addition
 import compare
 import synctags
 import txt2json
+import pickone
 
 def main():
     args = sys.argv[1:]
@@ -16,8 +17,10 @@ def main():
             compare.main()
         elif func == "txt2json":
             txt2json.main()
+        elif func == "pickone":
+            pickone.main()
     else:
-        print("please enter synca/add/compare/txt2json")
+        print("please enter synca/add/compare/txt2json/pickone")
 
 if __name__ == '__main__':
     main()

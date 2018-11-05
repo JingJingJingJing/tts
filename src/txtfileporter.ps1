@@ -11,9 +11,16 @@ Get-ChildItem ./ | ForEach-Object -Process{
 				mkdir txt
 			}
 			$old_path = $_.name+"/"+$hash[$_.name]+"-strings.txt"
-			$new_path = "txt/"+$hash[$_.name]+".txt"
-			Move-Item $old_path $new_path
-			Remove-Item $_.name
+			if(-not (Test-path $old_path)){
+				$old_path = $_.name+"/"+$_.name+"-strings.txt"
+			}
+			if(Test-path $old_path){
+				$new_path = "txt/"+$hash[$_.name]+".txt"
+				Move-Item $old_path $new_path
+				Remove-Item $_.name
+			}else{
+				$old_path+" not exist."
+			}
 		}
 	}
 }

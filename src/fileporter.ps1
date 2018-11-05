@@ -11,9 +11,17 @@ Get-ChildItem ./ | ForEach-Object -Process{
 				mkdir json
 			}
 			$old_path = $_.name+"/en.json"
-			$new_path = "json/"+$hash[$_.name]+".json"
-			Move-Item $old_path $new_path
-			Remove-Item $_.name
+			if(-not (Test-path $old_path)){
+				$old_path = $_.name+"/"+$hash[$_.name]+".json"
+			}
+			if(-not (Test-path $old_path)){
+				$old_path = $_.name+"/"+$_.name+".json"
+			}
+			if(Test-path $old_path){
+				$new_path = "json/"+$hash[$_.name]+".json"
+				Move-Item $old_path $new_path
+				Remove-Item $_.name
+			}
 		}
 	}
 }
