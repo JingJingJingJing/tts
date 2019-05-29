@@ -4,6 +4,7 @@ import compare
 import synctags
 import txt2json
 import pickone
+import fillup
 
 def main():
     args = sys.argv[1:]
@@ -19,6 +20,9 @@ def main():
             txt2json.main()
         elif func == "pickone":
             pickone.main()
+        elif func == "fillup":
+            fillup.main()
+
     else:
         print("please enter synca/add/compare/txt2json/pickone")
 

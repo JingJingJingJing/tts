@@ -1,7 +1,7 @@
 import json
 from collections import OrderedDict
 
-codelist = {'ar','cs','da','de','el','es','fi','fr','he','hr','hu','it','ja','ko','nb','nl','pl','pt','pt-BR','ro','ru','sk','sl','sr-Latn','sv','tr','uk','zh-Hans','zh-Hant'}
+codelist = {'ar','cs','da','de','el','es','fi','fr','he','hr','hu','it','ja','ko','nb','nl','pl','pt','pt-BR','ro','ru','sk','sl','sr','sv','tr','uk','zh-Hans','zh-Hant'}
 
 def loadJsonFile(dir):
     with open(dir, 'r', encoding='UTF-8') as file:
